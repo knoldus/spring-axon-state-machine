@@ -1,0 +1,11 @@
+{
+  "cutoff": true,
+  "bucket": {
+    "uid": "bucket1",
+    "groupId": "group1",
+    "groupKind": "NETTING",
+    "eb": "hello_eb",
+    "pb": "hello_pb"
+  },
+  "time": 1655702344286
+}

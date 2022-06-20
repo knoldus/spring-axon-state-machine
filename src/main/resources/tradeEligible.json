@@ -1,0 +1,16 @@
+{
+  "tradeId": "636711_6367113",
+  "tradeEligible": true,
+  "classificationId": "clas_121",
+  "direction": "BUY",
+  "quantity": 3,
+  "allocationAmount": 500,
+  "confirmationAmount": 500,
+  "bucket": {
+    "uid": "bucket1",
+    "groupId": "group1",
+    "groupKind": "NETTING",
+    "eb": "hello_eb",
+    "pb": "hello_pb"
+  }
+}
