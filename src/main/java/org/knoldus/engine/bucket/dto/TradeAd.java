@@ -1,4 +1,4 @@
-package engine.bucket.dto;
+package org.knoldus.engine.bucket.dto;
 
 import lombok.*;
 

@@ -1,8 +1,10 @@
-package engine.bucket.event;
+package org.knoldus.engine.bucket.event;
 
-import engine.bucket.dto.TradeAd;
+import org.knoldus.engine.bucket.dto.TradeAd;
 
-public class EligibleTradeEvent extends BaseEvent<String> {
+import java.io.Serializable;
+
+public class EligibleTradeEvent extends BaseEvent<String> implements Serializable {
 
     private final TradeAd tradeAd;
     public EligibleTradeEvent(String id, TradeAd tradeAd) {

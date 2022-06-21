@@ -1,10 +1,9 @@
-package engine.bucket.machine;
+package org.knoldus.engine.bucket.machine;
 
-import engine.bucket.command.MasterCutOffCommand;
-import engine.bucket.command.TradeEligibleCommand;
-import engine.bucket.dto.TradeAd;
-import engine.bucket.event.EligibleTradeEvent;
-import engine.bucket.event.ToldBucketCutOff;
+import org.knoldus.engine.bucket.command.MasterCutOffCommand;
+import org.knoldus.engine.bucket.command.TradeEligibleCommand;
+import org.knoldus.engine.bucket.event.EligibleTradeEvent;
+import org.knoldus.engine.bucket.event.ToldBucketCutOff;
 import lombok.extern.slf4j.Slf4j;
 import org.axonframework.commandhandling.CommandHandler;
 import org.axonframework.eventsourcing.EventSourcingHandler;

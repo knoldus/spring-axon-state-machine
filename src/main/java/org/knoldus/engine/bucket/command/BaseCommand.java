@@ -1,8 +1,10 @@
-package engine.bucket.command;
+package org.knoldus.engine.bucket.command;
 
 import org.axonframework.modelling.command.TargetAggregateIdentifier;
 
-public class BaseCommand<T> {
+import java.io.Serializable;
+
+public class BaseCommand<T> implements Serializable {
 
     @TargetAggregateIdentifier
     private final T id;

@@ -1,6 +1,8 @@
-package engine.bucket.event;
+package org.knoldus.engine.bucket.event;
 
-public class BaseEvent<T> {
+import java.io.Serializable;
+
+public class BaseEvent<T> implements Serializable {
     private final T id;
 
     public BaseEvent(T id) {

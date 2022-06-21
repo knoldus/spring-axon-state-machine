@@ -1,9 +1,11 @@
-package engine.bucket.command;
+package org.knoldus.engine.bucket.command;
 
 
-import engine.bucket.dto.BucketMasterSyn;
+import org.knoldus.engine.bucket.dto.BucketMasterSyn;
 
-public class MasterCutOffCommand extends BaseCommand<String>{
+import java.io.Serializable;
+
+public class MasterCutOffCommand extends BaseCommand<String> implements Serializable {
 
 
     private final BucketMasterSyn bucketMasterSyn;

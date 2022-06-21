@@ -1,4 +1,4 @@
-package engine.bucket.query;
+package org.knoldus.engine.bucket.query;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

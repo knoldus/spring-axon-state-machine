@@ -1,8 +1,10 @@
-package engine.bucket.event;
+package org.knoldus.engine.bucket.event;
 
-import engine.bucket.dto.BucketMasterSyn;
+import org.knoldus.engine.bucket.dto.BucketMasterSyn;
 
-public class ToldBucketCutOff extends BaseEvent<String> {
+import java.io.Serializable;
+
+public class ToldBucketCutOff extends BaseEvent<String> implements Serializable {
 
     private final BucketMasterSyn bucketMasterSyn;
     public ToldBucketCutOff(String id, BucketMasterSyn bucketMasterSyn) {

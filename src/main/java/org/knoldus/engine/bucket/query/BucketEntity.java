@@ -1,6 +1,6 @@
-package engine.bucket.query;
+package org.knoldus.engine.bucket.query;
 
-import engine.bucket.machine.BucketState;
+import org.knoldus.engine.bucket.machine.BucketState;
 import lombok.*;
 
 import javax.persistence.Entity;
@@ -12,7 +12,7 @@ import java.io.Serializable;
 @Entity
 @Data
 @Table
-public class BucketEntity  {
+public class BucketEntity implements Serializable {
 
     private static final long SerialVersionUID = 10L;
 

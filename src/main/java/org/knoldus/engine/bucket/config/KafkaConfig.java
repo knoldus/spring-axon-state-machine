@@ -1,6 +1,6 @@
-package engine.bucket.config;
+package org.knoldus.engine.bucket.config;
 
-import engine.ApplicationConstant;
+import org.knoldus.engine.ApplicationConstant;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.springframework.beans.factory.annotation.Value;
