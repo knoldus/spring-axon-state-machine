@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 public class ManageBucketService {
 
     private final BucketRepository bucketRepository;
+    BucketEntity bucket = new BucketEntity();
 
 
     public ManageBucketService(BucketRepository bucketRepository) {
@@ -21,7 +22,6 @@ public class ManageBucketService {
     @EventHandler
     public void on(EligibleTradeEvent eligibleTradeEvent) {
         log.info("Handling EligibleTradeEvent...");
-        BucketEntity bucket = new BucketEntity();
         bucket.setBucketId(eligibleTradeEvent.getTradeAd().getBucket().getUid());
         bucket.setAllocationAmount(eligibleTradeEvent.getTradeAd().getAllocationAmount());
         bucket.setClassificationId(eligibleTradeEvent.getTradeAd().getClassificationId());
@@ -34,8 +34,9 @@ public class ManageBucketService {
         bucketRepository.save(bucket);
     }
 
-//    @EventHandler
-//    public void on(ToldBucketCutOff toldBucketCutOff) {
-//      //TODO
-//    }
+    @EventHandler
+    public void on(ToldBucketCutOff toldBucketCutOff) {
+        bucket.setBucketState(BucketState.CUTOFF);
+        bucketRepository.save(bucket);
+    }
 }
