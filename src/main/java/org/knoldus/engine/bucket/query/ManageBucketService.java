@@ -34,8 +34,8 @@ public class ManageBucketService {
         bucketRepository.save(bucket);
     }
 
-    @EventHandler
-    public void on(ToldBucketCutOff toldBucketCutOff) {
-      //TODO
-    }
+//    @EventHandler
+//    public void on(ToldBucketCutOff toldBucketCutOff) {
+//      //TODO
+//    }
 }

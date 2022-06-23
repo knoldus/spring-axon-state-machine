@@ -3,7 +3,10 @@
 
 ### How to Run- 
 
-install kafkacat
+install kafkacat - ```sudo apt install kafkacat```
+install mongo client - ```sudo apt install mongodb-clients```
+
+MongoDb is used as event store.
 
 
 #### Start kafka
@@ -31,7 +34,18 @@ Bucket master sync event(ToldBucketCutoff)
 ```
 kafkacat -P -b localhost:9092 -t master_buckets  src/main/resources/toldbucketcutoff.json
 ```
+open mongo shell 
+```mongo admin -u root -p rootpassword
+```
 
+show databases
+```show dbs```
 
+swithch to event store database 
+```use axonframework```
 
+show collectiopns in databases
+```show collections```
 
+show documents inside collection
+```db.domainevents.find()```

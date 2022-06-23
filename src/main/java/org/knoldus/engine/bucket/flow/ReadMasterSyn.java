@@ -12,6 +12,7 @@ import org.springframework.stereotype.Component;
 
 import java.nio.charset.StandardCharsets;
 import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.ExecutionException;
 
 @Component
 @RequiredArgsConstructor
@@ -23,7 +24,7 @@ public class ReadMasterSyn {
             groupId = ApplicationConstant.GROUP_ID_JSON,
             topics = ApplicationConstant.TOPIC_NAME_BUCKET_MASTER,
             containerFactory = ApplicationConstant.KAFKA_LISTENER_CONTAINER_FACTORY)
-    public void receivedMessage(byte[] message) throws JsonProcessingException {
+    public void receivedMessage(byte[] message) throws JsonProcessingException, ExecutionException, InterruptedException {
 
         String bucketMasterSynMessage = new String(message, StandardCharsets.UTF_8);
         ObjectMapper mapper = new ObjectMapper();
@@ -35,6 +36,7 @@ public class ReadMasterSyn {
                     commandGateway.send(
                             new MasterCutOffCommand(bucketMasterSyn.getBucket().getUid(),
                                     bucketMasterSyn));
+            System.out.println(send.get());
 
         }
 

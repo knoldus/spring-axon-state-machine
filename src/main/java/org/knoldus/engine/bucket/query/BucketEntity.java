@@ -1,18 +1,16 @@
 package org.knoldus.engine.bucket.query;
 
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import org.knoldus.engine.bucket.machine.BucketState;
 import lombok.*;
+import org.springframework.data.annotation.Id;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
 import java.io.Serializable;
 
 
-@Entity
 @Data
-@Table
-public class BucketEntity implements Serializable {
+@JsonSerialize
+public class BucketEntity {
 
     private static final long SerialVersionUID = 10L;
 
