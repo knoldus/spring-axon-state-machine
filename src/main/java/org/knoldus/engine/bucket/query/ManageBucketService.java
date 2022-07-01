@@ -2,7 +2,8 @@ package org.knoldus.engine.bucket.query;
 
 import lombok.extern.slf4j.Slf4j;
 import org.axonframework.eventhandling.EventHandler;
-import org.knoldus.engine.bucket.event.EligibleTradeEvent;
+import org.knoldus.engine.bucket.event.EligibleTrade;
+import org.knoldus.engine.bucket.event.MasterLocked;
 import org.knoldus.engine.bucket.event.ToldBucketCutOff;
 import org.knoldus.engine.bucket.machine.BucketState;
 import org.springframework.stereotype.Service;
@@ -20,23 +21,29 @@ public class ManageBucketService {
     }
 
     @EventHandler
-    public void on(EligibleTradeEvent eligibleTradeEvent) {
+    public void on(EligibleTrade eligibleTrade) {
         log.info("Handling EligibleTradeEvent...");
-        bucket.setBucketId(eligibleTradeEvent.getTradeAd().getBucket().getUid());
-        bucket.setAllocationAmount(eligibleTradeEvent.getTradeAd().getAllocationAmount());
-        bucket.setClassificationId(eligibleTradeEvent.getTradeAd().getClassificationId());
-        bucket.setDirection(eligibleTradeEvent.getTradeAd().getDirection());
-        bucket.setTradeId(eligibleTradeEvent.getTradeAd().getTradeId());
-        bucket.setQuantity(eligibleTradeEvent.getTradeAd().getQuantity());
-        bucket.setConfirmationAmount(eligibleTradeEvent.getTradeAd().getConfirmationAmount());
+        bucket.setBucketId(eligibleTrade.getTradeAd().getBucketId());
         bucket.setBucketState(BucketState.OPEN);
 
         bucketRepository.save(bucket);
+
     }
 
     @EventHandler
     public void on(ToldBucketCutOff toldBucketCutOff) {
+        log.info("Handling EligibleTradeEvent...");
+        bucket.setBucketId(toldBucketCutOff.getBucketMasterSyn().getBucketId());
         bucket.setBucketState(BucketState.CUTOFF);
         bucketRepository.save(bucket);
     }
+
+    @EventHandler
+    public void on(MasterLocked masterLocked) {
+        log.info("Handling EligibleTradeEvent...");
+        bucket.setBucketId(masterLocked.getBucketMasterSyn().getBucketId());
+        bucket.setBucketState(BucketState.LOCKED);
+        bucketRepository.save(bucket);
+    }
+
 }

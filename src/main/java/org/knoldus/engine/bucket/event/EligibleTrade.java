@@ -5,12 +5,12 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import org.knoldus.engine.bucket.dto.TradeAd;
 
 
-public class EligibleTradeEvent extends BaseEvent<String> {
+public class EligibleTrade extends BaseEvent<String> {
 
     private final TradeAd tradeAd;
     @JsonCreator
-    public EligibleTradeEvent(@JsonProperty("id") String id,
-                              @JsonProperty("tradeAd") TradeAd tradeAd) {
+    public EligibleTrade(@JsonProperty("id") String id,
+                         @JsonProperty("tradeAd") TradeAd tradeAd) {
         super(id);
         this.tradeAd = tradeAd;
     }

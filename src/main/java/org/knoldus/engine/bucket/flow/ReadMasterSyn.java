@@ -4,6 +4,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.knoldus.engine.ApplicationConstant;
 import org.knoldus.engine.bucket.command.MasterCutOffCommand;
+import org.knoldus.engine.bucket.command.MasterLockCommand;
 import org.knoldus.engine.bucket.dto.BucketMasterSyn;
 import lombok.RequiredArgsConstructor;
 import org.axonframework.commandhandling.gateway.CommandGateway;
@@ -30,15 +31,17 @@ public class ReadMasterSyn {
         ObjectMapper mapper = new ObjectMapper();
         BucketMasterSyn bucketMasterSyn =
                 mapper.readValue(bucketMasterSynMessage, BucketMasterSyn.class);
-        if (bucketMasterSyn.isCutoff()) {
+        if (bucketMasterSyn.isCutoff() && !bucketMasterSyn.isLock()) {
 
-            CompletableFuture<Object> send =
-                    commandGateway.send(
-                            new MasterCutOffCommand(bucketMasterSyn.getBucket().getUid(),
-                                    bucketMasterSyn));
-            System.out.println(send.get());
+            commandGateway.send(
+                    new MasterCutOffCommand(bucketMasterSyn.getBucketId(),
+                            bucketMasterSyn));
 
+        } else if (bucketMasterSyn.isCutoff() && bucketMasterSyn.isLock()) {
+
+            commandGateway.send(
+                    new MasterLockCommand(bucketMasterSyn.getBucketId(),
+                            bucketMasterSyn));
         }
-
     }
 }

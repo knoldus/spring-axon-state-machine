@@ -13,30 +13,33 @@ import lombok.*;
 public class TradeAd {
     private String tradeId;
     private boolean tradeEligible;
-    private String classificationId;
     private String direction;
     private double quantity;
     private double allocationAmount;
     private double confirmationAmount;
-    private Bucket bucket;
+    private String eb;
+    private String pb;
+    private String bucketId;
 
     @JsonCreator
     public TradeAd(
             @JsonProperty("tradeId") String tradeId,
             @JsonProperty("isTradeEligible") boolean tradeEligible,
-            @JsonProperty("classificationId") String classificationId,
             @JsonProperty("direction") String direction,
             @JsonProperty("quantity") double quantity,
             @JsonProperty("allocationAmount") double allocationAmount,
             @JsonProperty("confirmationAmount") double confirmationAmount,
-            @JsonProperty("bucket") Bucket bucket) {
+            @JsonProperty("eb") String eb,
+            @JsonProperty("pb") String pb,
+            @JsonProperty("bucketId") String bucketId) {
         this.tradeId = tradeId;
         this.tradeEligible = tradeEligible;
-        this.classificationId = classificationId;
         this.direction = direction;
         this.quantity = quantity;
         this.allocationAmount = allocationAmount;
         this.confirmationAmount = confirmationAmount;
-        this.bucket = bucket;
+        this.eb = eb;
+        this.pb = pb;
+        this.bucketId = bucketId;
     }
 }

@@ -13,17 +13,21 @@ import lombok.*;
 public class BucketMasterSyn {
 
     private boolean cutoff;
-    private Bucket bucket;
+
+    private boolean lock;
+    private String bucketId;
     private long time;
 
     @JsonCreator
     public BucketMasterSyn(
             @JsonProperty("cutoff") boolean cutoff,
-            @JsonProperty("bucket") Bucket bucket,
+            @JsonProperty("lock") boolean lock,
+            @JsonProperty("bucketId") String bucketId,
             @JsonProperty("time") long time) {
 
         this.cutoff = cutoff;
-        this.bucket = bucket;
+        this.lock = lock;
+        this.bucketId = bucketId;
         this.time = time;
     }
 }

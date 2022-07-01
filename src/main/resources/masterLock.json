@@ -1,6 +1,6 @@
 {
   "cutoff": true,
-  "lock": false,
+  "lock": true,
   "bucketId": "bucket1",
   "time": 1655702344286
 }
