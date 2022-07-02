@@ -1,4 +1,4 @@
-package org.knoldus.engine.bucket.machine;
+package org.knoldus.engine.bucket.main.aggregate;
 
 public enum BucketState {
 

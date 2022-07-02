@@ -1,4 +1,4 @@
-package org.knoldus.engine.bucket.config;
+package org.knoldus.engine.config;
 
 import com.mongodb.client.MongoClient;
 import org.axonframework.eventsourcing.eventstore.EmbeddedEventStore;

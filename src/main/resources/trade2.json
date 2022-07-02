@@ -1,11 +1,9 @@
 {
   "tradeId": "536731_1367119",
-  "tradeEligible": true,
   "direction": "BUY",
   "quantity": 3,
   "allocationAmount": 400,
   "confirmationAmount": 400,
   "eb": "536731",
-  "pb": "1367119",
-  "bucketId": "bucket1"
+  "pb": "1367119"
 }

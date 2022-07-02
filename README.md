@@ -24,10 +24,16 @@ mvn spring-boot:run
 
 #### send event to Kafka 
 
-
-tradeAd event(TradeEligible)
+bucketMaster event(CreateTrade)
 ```
-kafkacat -P -b localhost:9092 -t trades_buckets  src/main/resources/tradeEligible.json
+kafkacat -P -b localhost:9092 -t classmaster_buckets  src/main/resources/createbucket1.json
+
+```
+
+
+eligibleTradeData event(TradeEligible)
+```
+kafkacat -P -b localhost:9092 -t feed_trade  src/main/resources/trade1.json
 
 ```
 Bucket master sync event(ToldBucketCutoff)

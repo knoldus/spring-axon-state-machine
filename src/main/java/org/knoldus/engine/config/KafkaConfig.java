@@ -1,4 +1,4 @@
-package org.knoldus.engine.bucket.config;
+package org.knoldus.engine.config;
 
 import org.knoldus.engine.ApplicationConstant;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
@@ -34,20 +34,6 @@ public class KafkaConfig {
     private String autoOffsetReset;
 
     //TODO: producer to be use.
-    @Bean
-    public ProducerFactory<String, Object> producerFactory() {
-        Map<String, Object> configMap = new HashMap<>();
-        configMap.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, bootstrapServer);
-        configMap.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, keyDeserializer);
-        configMap.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, valueDeserializer);
-        configMap.put(JsonDeserializer.TRUSTED_PACKAGES, ApplicationConstant.TRUSTED_PACKAGE);
-        return new DefaultKafkaProducerFactory<>(configMap);
-    }
-
-    @Bean
-    public KafkaTemplate<String, Object> kafkaTemplate() {
-        return new KafkaTemplate<>(producerFactory());
-    }
 
     @Bean
     public ConsumerFactory<String, byte[]> consumerFactory() {

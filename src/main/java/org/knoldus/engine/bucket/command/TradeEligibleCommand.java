@@ -1,18 +1,18 @@
 package org.knoldus.engine.bucket.command;
 
-import org.knoldus.engine.bucket.dto.TradeAd;
+import org.knoldus.engine.bucket.dto.EligibleTradeData;
 
 import java.io.Serializable;
 
 public class TradeEligibleCommand extends BaseCommand<String> implements Serializable {
 
-    private final TradeAd tradeAd;
-    public TradeEligibleCommand(String id, TradeAd tradeAd) {
+    private final EligibleTradeData tradeAd;
+    public TradeEligibleCommand(String id, EligibleTradeData tradeAd) {
         super(id);
         this.tradeAd = tradeAd;
     }
 
-    public TradeAd getTradeAd() {
+    public EligibleTradeData getTradeAd() {
         return tradeAd;
     }
 }

@@ -2,20 +2,20 @@ package org.knoldus.engine.bucket.event;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import org.knoldus.engine.bucket.dto.TradeAd;
+import org.knoldus.engine.bucket.dto.EligibleTradeData;
 
 
 public class EligibleTrade extends BaseEvent<String> {
 
-    private final TradeAd tradeAd;
+    private final EligibleTradeData eligibleTradeData;
     @JsonCreator
     public EligibleTrade(@JsonProperty("id") String id,
-                         @JsonProperty("tradeAd") TradeAd tradeAd) {
+                         @JsonProperty("tradeAd") EligibleTradeData eligibleTradeData) {
         super(id);
-        this.tradeAd = tradeAd;
+        this.eligibleTradeData = eligibleTradeData;
     }
 
-    public TradeAd getTradeAd() {
-        return tradeAd;
+    public EligibleTradeData getTradeAd() {
+        return eligibleTradeData;
     }
 }

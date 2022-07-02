@@ -1,9 +1,10 @@
-package org.knoldus.engine.bucket.machine;
+package org.knoldus.engine.bucket.main.aggregate;
 
 import org.knoldus.engine.bucket.command.MasterCutOffCommand;
 import org.knoldus.engine.bucket.command.MasterLockCommand;
 import org.knoldus.engine.bucket.command.TradeEligibleCommand;
-import org.knoldus.engine.bucket.dto.TradeAd;
+import org.knoldus.engine.bucket.dto.EligibleTradeData;
+import org.knoldus.engine.bucket.event.BucketCreated;
 import org.knoldus.engine.bucket.event.EligibleTrade;
 import org.knoldus.engine.bucket.event.MasterLocked;
 import org.knoldus.engine.bucket.event.ToldBucketCutOff;
@@ -26,14 +27,20 @@ public class BucketAggregate {
 
     private BucketState bucketState;
 
-    private List<TradeAd> bucketTrades = new ArrayList<>();
+    private List<EligibleTradeData> bucketTrades = new ArrayList<>();
 
     private Double netTrade;
     BucketAggregate(){}
 
-    @CommandHandler
-    public BucketAggregate(TradeEligibleCommand tradeEligibleCommand) {
+    public BucketAggregate(BucketCreated bucketCreated) {
+        log.info("BucketCreated received.");
+
         this.bucketState = BucketState.INIT;
+        this.bucketId = bucketCreated.getBucket().getBucketId();
+    }
+
+    @CommandHandler
+    public void handle(TradeEligibleCommand tradeEligibleCommand) {
         log.info("TradeEligibleCommand received.");
         AggregateLifecycle.apply(new EligibleTrade(tradeEligibleCommand.getId(),
                 tradeEligibleCommand.getTradeAd()));
@@ -60,20 +67,20 @@ public class BucketAggregate {
         this.bucketId = toldBucketCutOff.getBucketMasterSyn().getBucketId();
         this.bucketState = BucketState.CUTOFF;
         netTrade = bucketTrades.stream()
-                .map(TradeAd::getAllocationAmount)
+                .map(EligibleTradeData::getAllocationAmount)
                 .reduce(0.0, Double::sum);
     }
 
     @CommandHandler
     public void on(MasterLockCommand masterLock) {
-        log.info("An ToldBucketCutOff occurred.");
+        log.info("An MasterLockCommand occurred.");
         AggregateLifecycle.apply(new MasterLocked(masterLock.getId(),
                 masterLock.getBucketMasterSyn()));
     }
 
     @EventSourcingHandler
     public void on(MasterLocked masterLocked) {
-        log.info("An ToldBucketCutOff occurred.");
+        log.info("An MasterLocked occurred.");
         this.bucketId = masterLocked.getBucketMasterSyn().getBucketId();
         this.bucketState = BucketState.LOCKED;
         System.out.println(netTrade);

@@ -14,22 +14,18 @@ import lombok.*;
 @Data
 public class Bucket {
 
-    private String uid;
-    private String groupId;
-    private String groupKind;
-    private String eb;
-    private String pb;
+    private String bucketId;
+
+    private Long cutOff;
+
+    private Long lock;
 
     @JsonCreator
-    public Bucket(@JsonProperty("uid") String uid,
-                  @JsonProperty("groupId") String groupId,
-                  @JsonProperty("groupKind") String groupKind,
-                  @JsonProperty("eb") String eb,
-                  @JsonProperty("pb") String pb) {
-        this.uid = uid;
-        this.groupId = groupId;
-        this.groupKind = groupKind;
-        this.eb = eb;
-        this.pb = pb;
+    public Bucket(@JsonProperty("bucketId") String bucketId,
+                  @JsonProperty("cutOff") Long cutOff,
+                  @JsonProperty("lock") Long lock) {
+        this.bucketId = bucketId;
+        this.cutOff = cutOff;
+        this.lock = lock;
     }
 }

@@ -2,10 +2,14 @@ spring:
   kafka:
     consumer:
       bootstrap-servers: localhost:9092
-      trade:
+      bucket:
         topic: trades_buckets
       bucketmaster:
         topic: master_buckets
+      classmaster:
+        topic: classmaster_buckets
+      feed:
+        topic: feed_trade
       auto-offset-reset: latest
       key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
       value-deserializer: org.apache.kafka.common.serialization.ByteArrayDeserializer

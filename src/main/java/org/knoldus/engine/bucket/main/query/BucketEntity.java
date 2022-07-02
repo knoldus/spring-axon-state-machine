@@ -1,7 +1,7 @@
-package org.knoldus.engine.bucket.query;
+package org.knoldus.engine.bucket.main.query;
 
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import org.knoldus.engine.bucket.machine.BucketState;
+import org.knoldus.engine.bucket.main.aggregate.BucketState;
 import lombok.*;
 import org.springframework.data.annotation.Id;
 
