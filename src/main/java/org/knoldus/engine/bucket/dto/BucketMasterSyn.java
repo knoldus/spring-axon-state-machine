@@ -11,7 +11,6 @@ import lombok.*;
 @Builder
 @Data
 public class BucketMasterSyn {
-
     private boolean cutoff;
 
     private boolean lock;

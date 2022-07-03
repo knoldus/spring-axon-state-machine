@@ -32,7 +32,8 @@ public class TradeAggregate {
 
     @CommandHandler
     public TradeAggregate(CreateTradeCommand createTradeCommand) {
-        log.info("CreateTradeCommand received.");
+        log.info("CreateTradeCommand received for tradeId - {}",
+                createTradeCommand.getTradeData().getTradeId());
         this.tradeState = TradeState.INIT;
         this.tradeId = createTradeCommand.getTradeData().getTradeId();
         AggregateLifecycle.apply(new TradeCreated(createTradeCommand.getId(),
@@ -41,7 +42,8 @@ public class TradeAggregate {
 
     @EventSourcingHandler
     public void on(TradeCreated tradeCreated) throws JsonProcessingException {
-        log.info("An TradeCreated occurred.");
+        log.info("An TradeCreated occurred for tradeId - {}",
+                tradeCreated.getTradeData().getTradeId());
         this.tradeState = TradeState.PENDING;
         this.tradeId = tradeCreated.getTradeData().getTradeId();
         TradeData tradeData = tradeCreated.getTradeData();

@@ -24,34 +24,84 @@ mvn spring-boot:run
 
 #### send event to Kafka 
 
-bucketMaster event(CreateTrade)
+bucketMaster events(CreateBucket) 
 ```
 kafkacat -P -b localhost:9092 -t classmaster_buckets  src/main/resources/createbucket1.json
 
 ```
 
+```
+kafkacat -P -b localhost:9092 -t classmaster_buckets  src/main/resources/createbucket2.json
 
-eligibleTradeData event(TradeEligible)
+```
+
+
+eligibleTradeData events(TradeEligible)
 ```
 kafkacat -P -b localhost:9092 -t feed_trade  src/main/resources/trade1.json
 
 ```
-Bucket master sync event(ToldBucketCutoff)
+
 ```
-kafkacat -P -b localhost:9092 -t master_buckets  src/main/resources/toldbucketcutoff.json
+kafkacat -P -b localhost:9092 -t feed_trade  src/main/resources/trade2.json
+
 ```
+
+```
+kafkacat -P -b localhost:9092 -t feed_trade  src/main/resources/trade3.json
+
+```
+--------
+-------- trade5
+
+Bucket master sync events(ToldBucketCutoff)
+Bucket1 -
+```
+kafkacat -P -b localhost:9092 -t master_buckets  src/main/resources/toldbucket1cutoff.json
+```
+Bucket2 -
+```
+kafkacat -P -b localhost:9092 -t master_buckets  src/main/resources/toldbucket2cutoff.json
+```
+
+Bucket master sync events(ToldBucketCutoff)
+Bucket1
+```
+kafkacat -P -b localhost:9092 -t master_buckets  src/main/resources/masterLock1.json
+```
+Bucket2
+```
+kafkacat -P -b localhost:9092 -t master_buckets  src/main/resources/masterLock2.json
+
+```
+
+####MongoDb database operations - 
+
 open mongo shell 
-```mongo admin -u root -p rootpassword
+```
+mongo admin -u root -p rootpassword
 ```
 
 show databases
 ```show dbs```
 
-swithch to event store database 
+switch to event store database 
 ```use axonframework```
 
-show collectiopns in databases
+show collections in databases
 ```show collections```
 
-show documents inside collection
+show documents inside domainevents collection
 ```db.domainevents.find()```
+
+switch to bucketEntity store database
+```use axonframework_bucket```
+
+show documents inside bucketEntity collection
+```db.bucketEntity.find()```
+
+
+To see output of netted trade 
+```
+kafkacat -b localhost:9092 -t net_trade -C 
+```

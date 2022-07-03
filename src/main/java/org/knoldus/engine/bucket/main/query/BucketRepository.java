@@ -16,11 +16,5 @@ public interface BucketRepository extends MongoRepository<BucketEntity, String> 
     <S extends BucketEntity> S save(S entity);
 
     @Override
-    <S extends BucketEntity> Optional<S> findOne(Example<S> example);
-
-    @Override
-    <S extends BucketEntity> boolean exists(Example<S> example);
-
-    @Override
-    <S extends BucketEntity, R> R findBy(Example<S> example, Function<FluentQuery.FetchableFluentQuery<S>, R> queryFunction);
+    Optional<BucketEntity> findById(String s);
 }

@@ -14,7 +14,7 @@ import java.util.List;
 public class BucketEntity implements Serializable {
     @Id
     private String bucketId;
-    private List<String> tradeId;
+    private List<String> tradeIds;
     private BucketState bucketState;
 
     public String getBucketId() {
@@ -25,12 +25,12 @@ public class BucketEntity implements Serializable {
         this.bucketId = bucketId;
     }
 
-    public List<String> getTradeId() {
-        return tradeId;
+    public List<String> getTradeIds() {
+        return tradeIds;
     }
 
-    public void setTradeId(List<String> tradeId) {
-        this.tradeId = tradeId;
+    public void setTradeIds(List<String> tradeId) {
+        this.tradeIds = tradeId;
     }
 
     public BucketState getBucketState() {

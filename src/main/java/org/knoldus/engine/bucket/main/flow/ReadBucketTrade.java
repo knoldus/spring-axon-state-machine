@@ -34,7 +34,7 @@ public class ReadBucketTrade {
 
             CompletableFuture<Object> send =
                     commandGateway.send(
-                            new TradeEligibleCommand(UUID.randomUUID().toString(), tradeAd));
+                            new TradeEligibleCommand(tradeAd.getBucketId(), tradeAd));
             Object o = send.get();
             System.out.println(o);
 
