@@ -3,7 +3,6 @@ package org.knoldus.engine.trade.aggregate;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
-import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.axonframework.commandhandling.CommandHandler;
 import org.axonframework.eventsourcing.EventSourcingHandler;
@@ -15,9 +14,7 @@ import org.knoldus.engine.trade.command.CreateTradeCommand;
 import org.knoldus.engine.trade.dto.TradeData;
 import org.knoldus.engine.trade.event.TradeCreated;
 import org.knoldus.engine.trade.flow.WriteEligibleTrade;
-import org.springframework.beans.factory.annotation.Autowired;
 
-import static org.knoldus.engine.ApplicationConstant.TOPIC_NAME_BUCKET_TRADE;
 
 @Aggregate
 @Slf4j

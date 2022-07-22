@@ -5,8 +5,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
 import org.axonframework.commandhandling.gateway.CommandGateway;
 import org.knoldus.engine.ApplicationConstant;
-import org.knoldus.engine.bucket.command.CreateBucketCommand;
-import org.knoldus.engine.bucket.dto.Bucket;
+
 import org.knoldus.engine.trade.command.CreateTradeCommand;
 import org.knoldus.engine.trade.dto.TradeData;
 import org.springframework.kafka.annotation.KafkaListener;
@@ -14,7 +13,6 @@ import org.springframework.stereotype.Component;
 
 import java.nio.charset.StandardCharsets;
 import java.util.UUID;
-import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
 
 @Component

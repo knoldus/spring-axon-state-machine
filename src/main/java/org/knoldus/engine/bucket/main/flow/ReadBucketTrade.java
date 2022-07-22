@@ -32,12 +32,8 @@ public class ReadBucketTrade {
         EligibleTradeData tradeAd = mapper.readValue(tradeAdMessage, EligibleTradeData.class);
         if (tradeAd.isTradeEligible()) {
 
-            CompletableFuture<Object> send =
-                    commandGateway.send(
-                            new TradeEligibleCommand(tradeAd.getBucketId(), tradeAd));
-            Object o = send.get();
-            System.out.println(o);
-
+            commandGateway.send(
+                    new TradeEligibleCommand(tradeAd.getBucketId(), tradeAd));
         }
 
     }
