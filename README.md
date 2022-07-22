@@ -1,6 +1,17 @@
 # spring-axon-state-machine
 
+### How to run Checkstyle?
+ ```mvn checkstyle:checkstyle```
 
+### How to run PMD?
+```mvn pmd:pmd```
+
+### How to run Spotbugs?
+```
+mvn compile
+mvn spotbugs:check // To run the scan
+mvn spotbugs:spotbugs 
+```
 ### How to Run- 
 
 install kafkacat - ```sudo apt install kafkacat```

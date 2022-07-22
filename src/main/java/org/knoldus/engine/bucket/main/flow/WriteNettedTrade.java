@@ -34,7 +34,7 @@ public class WriteNettedTrade {
                 template.send(topicName, message);
 
 
-        future.addCallback(new ListenableFutureCallback<>() {
+        future.addCallback(new ListenableFutureCallback<SendResult<String, String>>() {
 
             @Override
             public void onSuccess(SendResult<String, String> result) {

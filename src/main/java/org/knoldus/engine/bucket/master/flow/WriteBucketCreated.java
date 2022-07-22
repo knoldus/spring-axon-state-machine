@@ -32,7 +32,7 @@ public class WriteBucketCreated {
        ListenableFuture<SendResult<String, byte[]>> future =
                 template.send(topicName, message.getBytes(StandardCharsets.UTF_8));
 
-        future.addCallback(new ListenableFutureCallback<>() {
+        future.addCallback(new ListenableFutureCallback<SendResult<String, byte[]>>() {
 
             @Override
             public void onSuccess(SendResult<String, byte[]> result) {
